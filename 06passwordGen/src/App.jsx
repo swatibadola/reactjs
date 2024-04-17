@@ -42,7 +42,7 @@ function App() {
   return (
     <>
 
-      <div style={{ backgroundColor: 'darkgray', color: 'yellow', padding: 6, width: 500, fontSize: 25, fontWeight: 500, margin: 10, borderRadius: 15 }}>
+      <div className="mx-auto w-full max-w-7xl" style={{ backgroundColor: 'darkgray', color: 'yellow', padding: 6, width: 500, fontSize: 25, fontWeight: 500, margin: 10, borderRadius: 15 }}>
         <h1 style={{ color: 'darkblue', textAlign: 'center', fontSize: 25 }}>Password Generator</h1>
         <div style={{ display: 'flex', marginBottom: 10 }}>
           <input
