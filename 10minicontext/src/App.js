@@ -1,10 +1,16 @@
 import './App.css';
+import Login from './components/Login';
+import Profile from './components/Profile';
+import UserContext from './context/UserContext';
+import UserContextProvider from './context/UserContextProvider';
 
 function App() {
   return (
-    <>
+    <UserContextProvider>
       <h1 className='bg-red-900'>This is a new react project</h1>
-    </>
+      <Login/>
+      <Profile/>
+    </UserContextProvider>
   );
 }
 
