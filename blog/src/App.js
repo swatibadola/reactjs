@@ -1,14 +1,42 @@
+import { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import './App.css';
+import authService from './appwrite/auth';
+import { login, logout } from './store/authSlice';
+import { Footer, Header } from './components';
 
 function App() {
-  console.log(process.env.REACT_APP_APPWRITE_URL);
+  // LOADING STATE - Used to fetch data from DB using conditional rendering.
+  const [loading, setLoading] = useState(true)
+  const dispatch = useDispatch()
 
-  return (
-    <>
-      <h1 className=' bg-zinc-600 text-5xl text-center text-white'>A blog with appwrite</h1>
-    </>
-  );
+  //useEffect to check if its logged in or not
+  useEffect(() => {
+    authService.getCurrentUser()
+      .then((userData) => {
+        if (userData) {
+          dispatch(login({ userData }))
+        }
+        else {
+          dispatch(logout())
+        }
+      })
+      .finally(() => setLoading(false))
+  }, [])
+
+
+  // CONDITIONAL RENDERING
+  return !loading ? (
+    <div className=' min-h-screen flex flex-wrap content-between bg-gray-400'>
+      <div className=' w-full block'>
+        <Header />
+        <main>
+          {/* <Outlet/> */}
+        </main>
+        <Footer />
+      </div>
+    </div>
+  ) : null
 }
 
 export default App;
- 

@@ -1,6 +1,6 @@
 // AUTHENTICATION SERVICE
 
-import conf from '../conf'
+import conf from '../conf/config'
 import { Client, Account, ID } from "appwrite";
 
 export class AuthService {
